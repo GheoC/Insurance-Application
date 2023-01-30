@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd
+      http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.5.xsd">
+    <property name="u_id" value="(SELECT md5(random()::text || clock_timestamp()::text)::uuid)" dbms="postgresql"/>
+    <property name="u_id" value="(SELECT uuid())" dbms="h2"/>
+
+    <include file="/changelog/DDL/15_ddl_Create_Table_Benefit_Package.xml"/>
+    <include file="/changelog/DDL/16_ddl_Create_Table_Insurance.xml"/>
+    <include file="/changelog/DDL/17_ddl_Create_Table_Enrolment.xml"/>
+    <include file="/changelog/DDL/18_ddl_Create_Table_Claim.xml"/>
+    <include file="/changelog/DDL/19_ddl_Create_Table_Transaction.xml"/>
+
+</databaseChangeLog>

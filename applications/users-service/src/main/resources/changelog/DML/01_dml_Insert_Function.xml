@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet author="george" id="dml-01.001.insert_functions">
+        <insert tableName="function">
+            <column name="id" valueComputed="${u_id}"/>
+            <column name="name" value="CONSUMER"/>
+        </insert>
+        <insert tableName="function">
+            <column name="id" valueComputed="${u_id}"/>
+            <column name="name" value="CONSUMER_CLAIM_MANAGER"/>
+        </insert>
+        <insert tableName="function">
+            <column name="id" valueComputed="${u_id}"/>
+            <column name="name" value="COMPANY_MANAGER"/>
+        </insert>
+        <insert tableName="function">
+            <column name="id" valueComputed="${u_id}"/>
+            <column name="name" value="COMPANY_CLAIM_MANAGER"/>
+        </insert>
+        <insert tableName="function">
+            <column name="id" valueComputed="${u_id}"/>
+            <column name="name" value="COMPANY_SETTING_MANAGER"/>
+        </insert>
+        <insert tableName="function">
+            <column name="id" valueComputed="${u_id}"/>
+            <column name="name" value="COMPANY_REPORT_MANAGER"/>
+        </insert>
+        <insert tableName="function">
+            <column name="id" valueComputed="${u_id}"/>
+            <column name="name" value="SUPER_ADMIN"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

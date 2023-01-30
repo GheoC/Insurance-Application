@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet author="george" id="ddl-11.001.create_user_profile_table">
+        <createTable tableName="user_profile">
+            <column name="id" type="varchar(36)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="type" type="varchar(5)">
+                <constraints primaryKey="false" nullable="false"/>
+            </column>
+
+            <column name="status" type="varchar(15)">
+                <constraints primaryKey="false" nullable="false"/>
+            </column>
+
+            <column name="user_id" type="varchar(36)">
+                <constraints primaryKey="false" nullable="false" foreignKeyName="FK_user_profile_user"
+                             references="users (id)"/>
+            </column>
+
+            <column name="contact_id" type="varchar(36)">
+                <constraints primaryKey="false" nullable="false" foreignKeyName="FK_user_profile_contact_info"
+                             references="contact_info (id)"/>
+            </column>
+
+            <column name="company_id" type="varchar(36)">
+                <constraints primaryKey="false" nullable="false" foreignKeyName="FK_user_profile_company"
+                             references="company (id)"/>
+            </column>
+
+            <column name="user_details_id" type="varchar(36)">
+                <constraints primaryKey="false" nullable="false" foreignKeyName="FK_user_profile_user_details"
+                             references="user_details (id)"/>
+            </column>
+
+            <column name="created_at" type="DATETIME" defaultValueComputed="NOW()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="DATETIME" defaultValueComputed="NOW()">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

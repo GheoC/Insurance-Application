@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet author="george" id="dml-03.001.insert_admin_profile">
+        <insert tableName="admin_profile">
+            <column name="id" valueComputed="${u_id}"/>
+            <column name="type" value="ADMIN"/>
+            <column name="status" value="ACTIVE"/>
+            <column name="user_id" valueComputed="(SELECT id FROM users WHERE username='raisa')"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

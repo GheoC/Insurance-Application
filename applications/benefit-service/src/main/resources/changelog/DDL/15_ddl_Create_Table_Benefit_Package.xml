@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet author="george" id="ddl-15.001.create_benefit_package">
+        <createTable tableName="benefit_package">
+            <column name="id" type="varchar(36)">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+
+            <column name="name" type="varchar(150)">
+                <constraints primaryKey="false" nullable="false" unique="true"
+                             uniqueConstraintName="Unique_on_Name_and_CompanyID"/>
+            </column>
+
+            <column name="company_id" type="varchar(36)">
+                <constraints primaryKey="false" nullable="false" unique="true"
+                             uniqueConstraintName="Unique_on_Name_and_CompanyID"/>
+            </column>
+
+            <column name="payroll_frequency" type="varchar(20)">
+                <constraints primaryKey="false" nullable="false"/>
+            </column>
+
+            <column name="start_date" type="DATE">
+                <constraints primaryKey="false" nullable="false"/>
+            </column>
+
+            <column name="end_date" type="DATE">
+                <constraints primaryKey="false" nullable="false"/>
+            </column>
+
+            <column name="status" type="VARCHAR(20)">
+                <constraints primaryKey="false" nullable="false"/>
+            </column>
+
+            <column name="created_at" type="DATETIME" defaultValueComputed="NOW()">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="DATETIME" defaultValueComputed="NOW()">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

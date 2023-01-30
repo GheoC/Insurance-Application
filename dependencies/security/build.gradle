@@ -1,0 +1,24 @@
+dependencies {
+	api 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure'
+	api 'org.springframework.security:spring-security-jwt'
+
+	implementation (project(':dependencies:common'))
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+}
+
+configurations {
+	tests {
+		extendsFrom testImplementation
+	}
+}
+
+task jarTests(type: Jar, dependsOn: testClasses) {
+	archiveClassifier = 'tests'
+	from sourceSets.test.output
+}
+
+artifacts {
+	tests jarTests
+}

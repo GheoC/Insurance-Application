@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd
+      http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.5.xsd">
+    <property name="u_id" value="(SELECT md5(random()::text || clock_timestamp()::text)::uuid)" dbms="postgresql"/>
+    <property name="u_id" value="(SELECT uuid())" dbms="h2"/>
+
+    <include file="/changelog/DDL/01_ddl_Create_Table_User.xml"/>
+    <include file="/changelog/DDL/02_ddl_Create_Table_Contact_Info.xml"/>
+    <include file="/changelog/DDL/03_ddl_Create_Table_Phone.xml"/>
+    <include file="/changelog/DDL/04_ddl_Create_Table_Address.xml"/>
+    <include file="/changelog/DDL/05_ddl_Create_Table_User_Details.xml"/>
+    <include file="/changelog/DDL/06_ddl_Create_Table_Function.xml"/>
+    <include file="/changelog/DDL/07_ddl_Create_Table_Admin_Profile.xml"/>
+    <include file="/changelog/DDL/08_ddl_Create_Table_Admin_Role.xml"/>
+    <include file="/changelog/DDL/09_ddl_Create_Table_Company.xml"/>
+    <include file="/changelog/DDL/10_ddl_Create_Table_Company_Function.xml"/>
+    <include file="/changelog/DDL/11_ddl_Create_Table_User_Profile.xml"/>
+    <include file="/changelog/DDL/12_ddl_Create_Table_Client_Role.xml"/>
+    <include file="/changelog/DDL/13_ddl_Create_Table_Contact_Info_Address.xml"/>
+    <include file="/changelog/DDL/14_ddl_Create_Table_Contact_Info_Phone.xml"/>
+
+    <include file="/changelog/DML/01_dml_Insert_Function.xml"/>
+    <include file="/changelog/DML/02_dml_Insert_User.xml"/>
+    <include file="/changelog/DML/03_dml_Insert_Admin_Profile.xml"/>
+    <include file="/changelog/DML/04_dml_Insert_Admin_Role.xml"/>
+
+</databaseChangeLog>

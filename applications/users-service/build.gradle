@@ -1,0 +1,29 @@
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	implementation (project(':dependencies:database'))
+	implementation (project(':dependencies:common'))
+	implementation (project(':dependencies:error-handler'))
+	implementation (project(':dependencies:security'))
+
+	implementation 'org.liquibase:liquibase-core'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'com.h2database:h2'
+
+	testImplementation project(path: ":dependencies:security", configuration: 'tests')
+}
+
+task jarTests(type: Jar, dependsOn: testClasses) {
+	archiveClassifier = 'tests'
+	from sourceSets.test.output
+}
+
+configurations {
+	tests {
+		extendsFrom testImplementation
+	}
+}
+artifacts {
+	tests jarTests
+}

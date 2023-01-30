@@ -1,0 +1,27 @@
+server:
+  port: 8081
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/insurance_app
+    username: postgres
+    password: 1234
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        naming:
+          physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+        default_schema: public
+    show-sql: true
+  application:
+    name: USER-SERVICE
+
+  liquibase:
+    change-log: classpath:/db.changelog-master.xml
+
+com.pot:
+  security:
+    public-key: -----BEGIN PUBLIC KEY-----MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4RgS2fJlPwMaL32DrF9yJYFLnuiylfhBFKIjhEY0z5AeSSz39e7TLngAu5c8C5NhaI4vgMG+SOudBanXdSuQUK1L+sbw/LsD2kZc/L1ERHqPKQipJGlHZXWmLAdnM+i5JKto1RxSWBiLXduBjQv2s6B52RvowMAvVnUmYn+8+mWxc3U/cl74X78fNnnoIFkkReIp64LjC8NwYFM/SdNNiKB+beK2FIn6tu5ZJbUhA8ZWwTk25Zyw1JO+LKQpyd5IFuYwVZcYio0C75QvnAaYPsV57l7HFDjaOJmWBDg/5NAjHtSELL5IsCiqHXc/2Y01sxKS+D0xh0hXzvEUsvExbQIDAQAB-----END PUBLIC KEY-----

@@ -1,0 +1,10 @@
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	implementation (project(':dependencies:security'))
+	implementation (project(':dependencies:common'))
+	implementation (project(':dependencies:database'))
+	implementation (project(':dependencies:error-handler'))
+
+	testImplementation project(path: ":dependencies:security", configuration: 'tests')
+}

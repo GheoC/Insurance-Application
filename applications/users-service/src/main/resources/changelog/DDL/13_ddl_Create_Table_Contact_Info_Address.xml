@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet author="george" id="ddl-13.001.create_contact_info_address_table">
+        <createTable tableName="contact_info_address">
+            <column name="contact_id" type="varchar(36)">
+                <constraints primaryKey="true" nullable="false" foreignKeyName="FK_contact_info_address_contact_info"
+                             references="contact_info (id)"/>
+            </column>
+
+            <column name="address_id" type="varchar(36)">
+                <constraints primaryKey="true" nullable="false" foreignKeyName="FK_contact_info_address_address"
+                             references="address (id)"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
