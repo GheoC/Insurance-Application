@@ -2,8 +2,10 @@ package com.pot.auth;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication(scanBasePackages = "com.pot")
+@EnableEurekaClient
 public class AuthServiceApplication {
 
   public static void main(String[] args) {
