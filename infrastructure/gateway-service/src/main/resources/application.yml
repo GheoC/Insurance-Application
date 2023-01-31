@@ -8,14 +8,29 @@ spring:
           uri: lb://AUTH-SERVICE
           predicates:
             - Path=/oauth/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: auth-service
+                fallbackuri: forward:/authFallBack
         - id: user-service
           uri: lb://USER-SERVICE
           predicates:
             - Path=/users-service/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: user-service
+                fallbackuri: forward:/userFallBack
         - id: benefit-service
           uri: lb://BENEFIT-SERVICE
           predicates:
             - Path=/benefit-service/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: benefit-service
+                fallbackuri: forward:/benefitFallBack
 
 eureka:
   client:
@@ -28,3 +43,16 @@ eureka:
 
 server:
   port: 8989
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
+hystrix:
+  command:
+    fallbackcmd:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
